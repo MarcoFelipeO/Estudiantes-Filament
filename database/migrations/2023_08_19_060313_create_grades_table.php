@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('enrollment_id');
+            $table->float('score');
+            $table->foreign('enrollment_id')->references('id')->on('enrollments')->cascadeOnDelete();
             $table->timestamps();
         });
     }
